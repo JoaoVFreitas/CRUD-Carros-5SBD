@@ -1,0 +1,13 @@
+﻿@model CarroModel
+@{
+    ViewData["Title"] = "Confirmação de Alugação do Carro";
+}
+
+<div class="text-center">
+    <h3>Realmente deseja alugar o carro?</h3>
+</div>
+
+<div class="d-grid gap-2 col-5 mx-auto">
+    <a class="btn btn-primary" role="button" asp-controller="Carro" asp-action="IndexPadrao">Cancelar</a>
+    <a class="btn btn-success" role="button" asp-controller="Agendamento" asp-action="Criar">Alugar</a>
+</div>

@@ -1,0 +1,18 @@
+﻿@using AluguelCarros.Enums;
+@model AgendamentoModel
+@{
+    ViewData["Title"] = "Cadastro de Agendamento";
+}
+
+<div class="text-center">
+    <h1>Agendamento</h1>
+</div>
+
+<form asp-controller="Agendamento" asp-action="Criar" method="post">
+    
+
+    <div class="d-grid gap-2 col-5 mx-auto">
+        <button type="submit" class="btn btn-primary">Alugar</button>
+        <a class="btn btn-secondary" asp-controller="Carro" asp-action="IndexPadrao">Voltar</a>
+    </div>
+</form>

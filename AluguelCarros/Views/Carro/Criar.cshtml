@@ -1,0 +1,41 @@
+﻿@model CarroModel
+@{
+    ViewData["Title"] = "Cadastro de Carros";
+}
+
+<div class="text-center">
+    <h1>Cadastro de Carro</h1>
+</div>
+
+<form asp-controller="Carro" asp-action="Criar" method="post">
+    <div class="mb-3">
+        <label for="marca">Marca</label>
+        <input type="text" asp-for="Marca" class="form-control" placeholder="Digite a marca do carro">
+        @Html.ValidationMessageFor(x => x.Marca)
+    </div>
+    <div class="mb-3">
+        <label for="modelo">Modelo</label>
+        <input type="text" asp-for="Modelo" class="form-control" placeholder="Digite o modelo do carro">
+        @Html.ValidationMessageFor(x => x.Modelo)
+    </div>
+    <div class="mb-3">
+        <label for="ano">Ano</label>
+        <input type="text" asp-for="Ano" class="form-control" placeholder="Digite o ano do carro">
+        @Html.ValidationMessageFor(x => x.Ano)
+    </div>
+    <div class="mb-3">
+        <label for="diaria">Diária</label>
+        <input type="text" asp-for="Diaria" class="form-control" placeholder="Digite o valor da diária do carro">
+        @Html.ValidationMessageFor(x => x.Diaria)
+    </div>
+    <div class="mb-3">
+        <label for="placa">Placa</label>
+        <input type="text" asp-for="Placa" class="form-control" placeholder="Digite a placa do carro">
+        @Html.ValidationMessageFor(x => x.Placa)
+    </div>
+
+    <div class ="d-grid gap-2 col-5 mx-auto">
+        <button type="submit" class="btn btn-primary">Adicionar</button>
+        <a class="btn btn-secondary" asp-controller="Carro" asp-action="Index">Voltar</a>
+    </div>
+</form>

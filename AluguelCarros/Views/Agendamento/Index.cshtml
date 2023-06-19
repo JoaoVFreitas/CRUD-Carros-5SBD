@@ -1,0 +1,72 @@
+﻿@model List<AgendamentoModel>
+@{
+    ViewData["Title"] = "Listagem de Agendamentos";
+}
+
+<div class="text-center">
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["MensagemErro"]
+        </div>
+    }
+
+    <br />
+
+    <h1>Listagem de Agendamentoss</h1>
+
+    <table id="table-agendamentos" class="display" style="width: 100%">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Email</th>
+                <th scope="col">Perfil</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (AgendamentoModel agendamento in Model)
+                {
+                    <tr>
+                        <th scope="row">@agendamento.Id</th>
+                        
+                        @if (agendamento.CarroId == 1)
+                        {
+                            <td>Ford</td>
+                        }
+                        @if (agendamento.CarroId == 2)
+                        {
+                            <td>Fiat</td>
+                        }
+                        @if (agendamento.CarroId == 6)
+                        {
+                            <td>Nissan</td>
+                        }
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a role="button" class="btn btn-primary"  asp-controller="Cliente" asp-action="Editar">Editar</a>
+                                <a role="button" class="btn btn-danger"  asp-controller="Cliente" asp-action="ApagarConfirmacao">Apagar</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr class="odd"><td valign="top" colspan="5">Nenhum cliente encontrado.</td></tr>
+            }
+        </tbody>
+    </table>
+</div>

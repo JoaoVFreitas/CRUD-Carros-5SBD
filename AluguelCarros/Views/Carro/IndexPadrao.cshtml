@@ -1,0 +1,61 @@
+﻿@model List<CarroModel>
+@{
+    ViewData["Title"] = "Listagem de Carros";
+}
+
+<div class="text-center">
+    @if(TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["MensagemErro"]
+        </div>
+    }
+
+    <br />
+
+    <h1>Listagem de Carros</h1>
+
+    <table id="table-carros" class="table" style="width: 100%">
+        <thead>
+            <tr>
+                <th scope="col">Marca</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Ano</th>
+                <th scope="col">Diária</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(Model != null && Model.Any())
+            {
+                foreach (CarroModel carro in Model)
+                {
+                    <tr>
+                        <td>@carro.Marca</td>
+                        <td>@carro.Modelo</td>
+                        <td>@carro.Ano</td>
+                        <td>R$@carro.Diaria</td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a role="button" class="btn btn-success" asp-route-id="@carro.Id" asp-controller="Agendamento" asp-action="Criar">Agendar</a>
+                                </div>
+                            </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr class="odd"><td valign="top" colspan="5">Nenhum carro encontrado.</td></tr>
+            }
+        </tbody>
+    </table>
+</div>
